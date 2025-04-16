@@ -1,7 +1,7 @@
 from web3 import Web3
 
 # Connect to local node or testnet
-w3 = Web3(https://bsc-dataseed.binance.org)
+w3 = Web3(Web3.HTTPProvider("https://bsc-dataseed.binance.org"))
 
 # Addresses
 attacker = 0x9701b5f824873560ad5670De0891D8D80F998eBa  # replace with your attacker address
